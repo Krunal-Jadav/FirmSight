@@ -80,10 +80,23 @@ def detect_architectures(rootfs):
         detected.append(architecture)
 
     if detected:
+
         print("\n[+] Detected Architectures:")
+        print("-" * 60)
 
         for architecture in sorted(set(detected)):
             print(f"    - {architecture}")
+
+        print("\n[+] Architecture Summary:")
+        print("-" * 60)
+
+        for architecture in sorted(set(detected)):
+            count = detected.count(architecture)
+
+            if count == 1:
+                print(f"    {architecture}: {count} ELF binary")
+            else:
+                print(f"    {architecture}: {count} ELF binaries")
 
     else:
         print("[!] No ELF binaries found.")
